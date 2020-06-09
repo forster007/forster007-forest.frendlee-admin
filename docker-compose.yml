@@ -1,0 +1,18 @@
+version: '3'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: forest.frendlee-admin
+    environment:
+      - APPLICATION_PORT=3310
+      - DATABASE_URL=postgres://postgres:docker@host.docker.internal:5432/frendlee_db
+      - DATABASE_SCHEMA=public
+      - DATABASE_SSL=false
+      - FOREST_AUTH_SECRET=8fb0b9b609692cc9b6ea176f9ecfbfc14db42e6415ebf893fb9d2b73313168102e4ea4f136da20e94686b837d4dbc7e7
+      - FOREST_ENV_SECRET=d238c31257ed4e07db8ab7816fdb1a8d41a0550b3240ba55408cc930abc3f598
+    ports:
+      - "3310:3310"
+    volumes:
+      - ./:/usr/src/app
